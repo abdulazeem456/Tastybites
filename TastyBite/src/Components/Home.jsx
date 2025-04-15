@@ -11,7 +11,7 @@ const Home = () => {
     // const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
 
     const deta = await response.json()
-    console.log(deta,'data')
+    // console.log(deta,'data')
     setMeal(deta.recipes)
     // setRanData(deta.meals.strMeal= 'g')
   }

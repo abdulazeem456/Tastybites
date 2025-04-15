@@ -36,10 +36,10 @@ const RecipyInfo = () => {
             />
             <div>
               <button className="btn btn-primary">{idmeal.name}</button>
-              <h1 className="text-2xl font-bold ">FOOD TYPE: {idmeal.mealType.map((items =>{
+              <h1 className="text-xl font-bold ">FOOD TYPE: {idmeal.mealType.map((items =>{
                 return <span key={items}>{items}, </span>
               }))}</h1>
-              <h2 className="text-2xl font-bold">FOOD RECIPE & INSTRUCTIONS: </h2>
+              <h2 className="text-xl font-bold">FOOD RECIPE & INSTRUCTIONS: </h2>
               <p className="py-6">{idmeal.instructions.map((int, index) =>{
                 return(<>
                   <p key={index} >
