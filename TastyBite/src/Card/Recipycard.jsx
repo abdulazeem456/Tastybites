@@ -17,6 +17,7 @@ const Recipycard = ({ meal }) => {
                 <img 
                   src={item.image}
                   alt="Food"
+                  className='w-full h-70'
                 />
               </figure>
             </div>

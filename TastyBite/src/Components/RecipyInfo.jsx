@@ -27,20 +27,20 @@ const RecipyInfo = () => {
       {!idmeal ? (
         'Loading...'
       ) : (
-        <div className="hero bg-base-200 min-h-screen">
-          <div className="hero-content flex-col lg:flex-row">
+        <div className="hero bg-base-200 min-h-screen overflow-x-hidden">
+          <div className="hero-content flex flex-col sm:flex-col lg:flex-row items-center gap-6 px-4">
             <img
               src={idmeal.image}
               alt={idmeal.name}
-              className="max-w-sm rounded-lg shadow-2xl"
+              className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-lg shadow-2xl"
             />
-            <div>
+            <div className='flex flex-col '> 
               <button className="btn btn-primary">{idmeal.name}</button>
               <h1 className="text-xl font-bold ">FOOD TYPE: {idmeal.mealType.map((items =>{
                 return <span key={items}>{items}, </span>
               }))}</h1>
               <h2 className="text-xl font-bold">FOOD RECIPE & INSTRUCTIONS: </h2>
-              <p className="py-6">{idmeal.instructions.map((int, index) =>{
+              <div className="py-6 ">{idmeal.instructions.map((int, index) =>{
                 return(<>
                   <p key={index} >
 
@@ -49,7 +49,7 @@ const RecipyInfo = () => {
                 </>
 
                 )
-              })}</p>
+              })}</div>
             </div>
           </div>
         </div>

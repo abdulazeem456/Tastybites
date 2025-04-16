@@ -1,9 +1,11 @@
 import React from 'react'
 import Recipycard from '../Card/Recipycard'
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
+import Skeletoncard from './skeletoncard'
 import { useEffect } from 'react'
 
 const RecipyList = () => {
+  const [loder, setLoder] = React.useState(false)
 
   const [meal, setMeal] = React.useState([])
   const [search, setSearch] = React.useState('')
@@ -13,24 +15,33 @@ const RecipyList = () => {
 
   }
   const Apifun = async () => {
+    setLoder(true)
     const response = await fetch(`https://dummyjson.com/recipes`)
     // const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
-
+   console.log('response', response)
     const deta = await response.json()
-    console.log(deta,'data')
+    setLoder(false)
+    console.log('data',deta)
+    
     setMeal(deta.recipes)
     // setRanData(deta.meals.strMeal= 'g')
   }
+  console.log('loder', loder)
 
-
+// const loderfun = setTimeout(() => {
+//   setLoder(dat)
+// }, 2000);
   useEffect(() => {
   
   Apifun()
     
   }, [search])
+
+
   
   return (
    <>
+
    <div className="w-full hidden justify-center items-center h-30 bg-green-100 ">
     <input type="text" 
     placeholder='Found your  meal' 
@@ -40,8 +51,9 @@ const RecipyList = () => {
     onClick={Apifun}>search</button>
    </div>
 
-   <div className="w-full flex flex-col-4 justify-center items-center h-fit bg-amber-50 p-10">
-      <Recipycard meal={meal}/>
+   <div className="w-full h-fit bg-amber-50 sm:p-10">
+     {loder ?<Skeletoncard  />
+     : <Recipycard meal={meal}/>}
     </div>
    </>
   )
